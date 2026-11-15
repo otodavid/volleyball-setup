@@ -1,4 +1,4 @@
-import { Show, SignInButton, SignOutButton } from "@clerk/react"
+import { Show, SignInButton } from "@clerk/react"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import {
