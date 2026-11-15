@@ -10,7 +10,7 @@ import { ClerkProvider } from "@clerk/react"
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 const REDIRECT_URL = import.meta.env.VITE_CLERK_SIGN_IN_FORCE_REDIRECT_URL
 
-if (!PUBLISHABLE_KEY || REDIRECT_URL) {
+if (!PUBLISHABLE_KEY || !REDIRECT_URL) {
   throw new Error("Clerk Publishable Key or Redirect URL missing .env file")
 }
 
