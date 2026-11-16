@@ -1,21 +1,50 @@
-# React + TypeScript + Vite + shadcn/ui
+# Volleyball Setup
 
-This is a template for a new Vite project with React, TypeScript, and shadcn/ui.
+pnpm workspace for the volleyball app.
 
-## Adding components
+## Getting started
 
-To add components to your app, run the following command:
+Use Node.js 24 LTS and pnpm 10.25.0 (pinned in `package.json`). If pnpm is not installed, run `corepack enable` with a Corepack-enabled Node installation.
 
-```bash
-npx shadcn@latest add button
+```sh
+pnpm install
+pnpm dev
 ```
 
-This will place the ui components in the `src/components` directory.
+The web app runs at the URL printed by Vite, usually http://localhost:5173.
+Its environment variables live in `apps/web/.env`:
 
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button"
+```dotenv
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+VITE_CLERK_SIGN_IN_FORCE_REDIRECT_URL=http://localhost:5173
 ```
+
+## Workspace layout
+
+- `apps/web`: React, TypeScript, and Vite frontend (`@volleyball/web`).
+- `apps/api`: reserved for a future API; add a `package.json` when ready.
+- `packages/*`: optional shared packages; create each with its own `package.json`.
+
+Internal dependencies should use `workspace:*`. Install dependencies from the repository root:
+
+```sh
+pnpm --filter @volleyball/web add <dependency>
+pnpm --filter @volleyball/web add -D <dev-dependency>
+pnpm add -Dw <shared-tool>
+```
+
+## Commands
+
+Run these from the repository root:
+
+| Command             | Purpose                                         |
+| ------------------- | ----------------------------------------------- |
+| `pnpm dev`          | Start workspace development servers in parallel |
+| `pnpm build`        | Build workspace packages in dependency order    |
+| `pnpm lint`         | Lint workspace packages                         |
+| `pnpm typecheck`    | Check TypeScript projects                       |
+| `pnpm format`       | Format the repository                           |
+| `pnpm format:check` | Check formatting without modifying files        |
+| `pnpm preview`      | Preview the built web app                       |
+
+Commit the root `pnpm-lock.yaml`. Use `pnpm install --frozen-lockfile` in CI.
