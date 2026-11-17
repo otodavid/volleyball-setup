@@ -32,6 +32,9 @@ importers:
       '@nestjs/platform-express':
         specifier: ^12.0.1
         version: 12.5.0(@nestjs/common@12.5.0(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@12.5.0)(rxjs@7.8.2)
+      '@volleyball/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -108,6 +111,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.107.1
         version: 5.107.1(@types/react@19.3.0)(react@19.3.1)
+      '@volleyball/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -175,6 +181,8 @@ importers:
       vite:
         specifier: ^8
         version: 8.3.8(@types/node@24.19.2)(jiti@2.7.0)
+
+  packages/types: {}
 
 packages:
 

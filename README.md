@@ -45,7 +45,10 @@ the frontend's admin status display does not protect those operations.
 
 - `apps/web`: React, TypeScript, and Vite frontend (`@volleyball/web`).
 - `apps/api`: NestJS API with the Express adapter (`@volleyball/api`).
-- `packages/*`: optional shared packages; create each with its own `package.json`.
+- `packages/types`: shared API response interfaces (`@volleyball/types`). Import
+  them with `import type`; this package has no runtime code or build step. Add
+  response contracts here as endpoints grow. Incoming JSON still needs runtime
+  validation because TypeScript interfaces only check code during compilation.
 
 Internal dependencies should use `workspace:*`. Install dependencies from the repository root:
 
