@@ -105,6 +105,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4
         version: 4.3.5(vite@8.3.8(@types/node@24.19.2)(jiti@2.7.0))
+      '@tanstack/react-query':
+        specifier: ^5.107.1
+        version: 5.107.1(@types/react@19.3.0)(react@19.3.1)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -136,6 +139,9 @@ importers:
       '@eslint/js':
         specifier: ^10
         version: 10.0.1(eslint@10.15.0(jiti@2.7.0))
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.107.1
+        version: 5.107.1(eslint@10.15.0(jiti@2.7.0))(typescript@6.0.3)
       '@types/node':
         specifier: ^24
         version: 24.19.2
@@ -1173,8 +1179,26 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7 || ^8
 
+  '@tanstack/eslint-plugin-query@5.107.1':
+    resolution: {integrity: sha512-ouojB8ML40E9+Kbxao52IKU0x3528FXHnQlMS5d8fpV/fVnsCRYmfg2PMaMzYEvgCqdxTtvZfrfbSOGf2qoCpw==}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
+      typescript: ^5.6.0 || ^6.0.0 || ^7.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   '@tanstack/query-core@5.107.1':
     resolution: {integrity: sha512-PSyAik11oQBEVOiVy5hjZWHmoUqOXqK1WYy4v55mcxozEfKaQgpUMsgnXhWjuESzSht8JfzqMS1m6M/9CpNgvg==}
+
+  '@tanstack/react-query@5.107.1':
+    resolution: {integrity: sha512-udCOOLp3ZAheUrIHLCe+ZZge6nr2ZUrGMSWcCuXsjY1Bf2JeeE09oxst97PILiCY6N8xo/7bIo3Hvz13zh06FA==}
+    peerDependencies:
+      '@types/react': ^18 || ^19
+      react: ^18 || ^19
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@tokenizer/inflate@0.6.1':
     resolution: {integrity: sha512-EuqSyHdOXN61cc5/rsW6uUn1TJZJGZr56jlkUbsLwVJ6uHgvwQyFkYfOCf+zzPFAYjftPk1WeJnEhpLVvzbm1A==}
@@ -4359,7 +4383,23 @@ snapshots:
       tailwindcss: 4.3.5
       vite: 8.3.8(@types/node@24.19.2)(jiti@2.7.0)
 
+  '@tanstack/eslint-plugin-query@5.107.1(eslint@10.15.0(jiti@2.7.0))(typescript@6.0.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.72.2(eslint@10.15.0(jiti@2.7.0))(typescript@6.0.3)
+      eslint: 10.15.0(jiti@2.7.0)
+    optionalDependencies:
+      typescript: 6.0.3
+    transitivePeerDependencies:
+      - supports-color
+
   '@tanstack/query-core@5.107.1': {}
+
+  '@tanstack/react-query@5.107.1(@types/react@19.3.0)(react@19.3.1)':
+    dependencies:
+      '@tanstack/query-core': 5.107.1
+      react: 19.3.1
+    optionalDependencies:
+      '@types/react': 19.3.0
 
   '@tokenizer/inflate@0.6.1':
     dependencies:

@@ -17,6 +17,7 @@ Its environment variables live in `apps/web/.env`:
 ```dotenv
 VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 VITE_CLERK_SIGN_IN_FORCE_REDIRECT_URL=http://localhost:5173
+VITE_API_URL=http://localhost:3000
 ```
 
 The NestJS API uses Clerk's Express middleware. Configure `apps/api/.env`
