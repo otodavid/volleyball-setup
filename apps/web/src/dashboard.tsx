@@ -3,7 +3,7 @@ import { Button } from "./components/ui/button"
 import { WelcomeBanner } from "./components/WelcomeBanner"
 import { GameDetail } from "./components/GameDetail"
 import { useQuery } from "@tanstack/react-query"
-import { isAdmin } from "./api/users"
+import { getMe } from "./api/users"
 import { Navigate } from "react-router"
 
 export const Dashboard = () => {
@@ -11,13 +11,13 @@ export const Dashboard = () => {
   const { getToken } = useAuth()
 
   const query = useQuery({
-    queryKey: ["isAdmin", user?.id],
+    queryKey: ["users", "me", user?.id],
     queryFn: async () => {
       const token = await getToken()
       if (!token) {
-        throw new Error("Sign in to check admin access")
+        throw new Error("Sign in to view your profile")
       }
-      return isAdmin(token)
+      return getMe(token)
     },
     enabled: isLoaded && Boolean(isSignedIn && user?.id),
   })
@@ -35,14 +35,12 @@ export const Dashboard = () => {
   }
 
   if (query.isError) {
-    return <p>Unable to check admin access. Please try again.</p>
+    return <p>Unable to load your profile. Please try again.</p>
   }
-
-  console.log(query.data)
 
   return (
     <div>
-      {query.data ? <p>This is admin</p> : <p>This is regular user</p>}
+      {query.data.isAdmin ? <p>This is admin</p> : <p>This is regular user</p>}
 
       <Show when={"signed-in"}>
         <SignOutButton>

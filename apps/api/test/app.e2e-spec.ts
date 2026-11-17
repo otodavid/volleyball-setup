@@ -31,13 +31,13 @@ describe('AppController (e2e)', () => {
       .expect('Hello World!');
   });
 
-  it('rejects an admin check without a session token', () => {
-    return request(app.getHttpServer()).get('/users/admin').expect(401);
+  it('rejects a profile request without a session token', () => {
+    return request(app.getHttpServer()).get('/users/me').expect(401);
   });
 
   it('rejects a malformed session token', () => {
     return request(app.getHttpServer())
-      .get('/users/admin')
+      .get('/users/me')
       .set('Authorization', 'Bearer invalid-token')
       .expect(401);
   });

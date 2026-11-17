@@ -21,20 +21,20 @@ describe('UsersController', () => {
     vi.mocked(getAuth).mockReturnValue({ userId: null } as ReturnType<
       typeof getAuth
     >);
-    expect(() => controller.isAdmin(request)).toThrow(UnauthorizedException);
+    expect(() => controller.getMe(request)).toThrow(UnauthorizedException);
   });
 
   it('uses the verified identity instead of a supplied admin ID', () => {
     vi.mocked(getAuth).mockReturnValue({ userId: 'user_regular' } as ReturnType<
       typeof getAuth
     >);
-    expect(controller.isAdmin(request)).toBe(false);
+    expect(controller.getMe(request)).toEqual({ isAdmin: false });
   });
 
   it('recognizes an authenticated admin', () => {
     vi.mocked(getAuth).mockReturnValue({ userId: 'user_admin' } as ReturnType<
       typeof getAuth
     >);
-    expect(controller.isAdmin(request)).toBe(true);
+    expect(controller.getMe(request)).toEqual({ isAdmin: true });
   });
 });

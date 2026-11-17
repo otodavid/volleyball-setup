@@ -35,8 +35,8 @@ Keep the secret key in the API environment only. `FRONTEND_URL` must match
 the frontend origin, including its port. Start the API with
 `pnpm --filter @volleyball/api start:dev`.
 
-`GET /users/admin` requires a Clerk session token in the Authorization bearer
-header. It returns a boolean for the authenticated user's admin status, or
+`GET /users/me` requires a Clerk session token in the Authorization bearer
+header. It returns `{ "isAdmin": boolean }` for the authenticated user, or
 401 when unauthenticated. It does not accept a user ID from the caller.
 Future admin-only API operations must enforce admin permission on the server;
 the frontend's admin status display does not protect those operations.
